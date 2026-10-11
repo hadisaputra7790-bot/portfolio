@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Portfolio pribadi — Web Developer. Menampilkan projek, keahlian, dan pengalaman." />
+  <meta name="author" content="Nama Anda" />
+  <meta name="theme-color" content="#0b0d12" />
+
+  <title>Nama Anda — Web Developer</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+
+  <!-- Favicon (SVG inline) -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%236366f1'/><text x='50' y='68' font-size='56' font-family='Inter,sans-serif' font-weight='800' fill='white' text-anchor='middle'>N</text></svg>" />
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- ===== Loading / Progress bar ===== -->
+  <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+
+  <!-- ===== Background dekoratif ===== -->
+  <div class="bg-glow" aria-hidden="true">
+    <span class="glow glow-1"></span>
+    <span class="glow glow-2"></span>
+    <span class="glow glow-3"></span>
+    <div class="grid-overlay"></div>
+  </div>
+
+  <!-- ===== Navbar ===== -->
+  <header class="navbar" id="navbar">
+    <nav class="container nav-inner" aria-label="Navigasi utama">
+      <a href="#home" class="brand" aria-label="Ke beranda">
+        <span class="brand-mark">N</span>
+        <span class="brand-text">Nama Anda</span>
+      </a>
+
+      <button class="nav-toggle" id="navToggle" aria-label="Buka menu" aria-expanded="false" aria-controls="navMenu">
+        <span></span><span></span><span></span>
+      </button>
+
+      <ul class="nav-menu" id="navMenu">
+        <li><a href="#home" class="nav-link active">Beranda</a></li>
+        <li><a href="#about" class="nav-link">Tentang</a></li>
+        <li><a href="#skills" class="nav-link">Keahlian</a></li>
+        <li><a href="#projects" class="nav-link">Projek</a></li>
+        <li><a href="#experience" class="nav-link">Pengalaman</a></li>
+        <li><a href="#contact" class="nav-link">Kontak</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <button class="theme-toggle" id="themeToggle" aria-label="Ganti tema" title="Ganti tema">
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+        </button>
+        <a href="#contact" class="btn btn-primary btn-sm nav-cta">Hubungi Saya</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <!-- ===== Hero / Perkenalan ===== -->
+    <section class="hero section" id="home">
+      <div class="container hero-inner">
+        <div class="hero-content">
+          <p class="hero-badge reveal">
+            <span class="dot" aria-hidden="true"></span>
+            Tersedia untuk projek freelance
+          </p>
+
+          <h1 class="hero-title reveal">
+            Hai, saya <span class="gradient-text">Hadi Saputra</span>
+          </h1>
+
+          <p class="hero-subtitle reveal">
+            <span class="typewriter" id="typewriter" aria-live="polite"></span>
+            <span class="caret" aria-hidden="true"></span>
+          </p>
+
+          <p class="hero-desc reveal">
+            Saya membangun antarmuka web yang cepat, rapi, dan nyaman digunakan.
+            Berfokus pada detail, performa, serta pengalaman pengguna yang bersih.
+          </p>
+
+          <div class="hero-actions reveal">
+            <a href="#projects" class="btn btn-primary">Lihat Projek</a>
+            <a href="#contact" class="btn btn-ghost">
+              Hubungi Saya
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
+          </div>
+
+          <ul class="hero-socials reveal" aria-label="Sosial media">
+            <li><a href="#" aria-label="GitHub" title="GitHub"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5A11.5 11.5 0 0 0 .5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.56v-2c-3.2.7-3.88-1.54-3.88-1.54-.53-1.34-1.29-1.7-1.29-1.7-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.56-.29-5.25-1.28-5.25-5.69 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11 11 0 0 1 5.79 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.12 3.05.74.81 1.18 1.83 1.18 3.09 0 4.42-2.69 5.39-5.26 5.68.41.36.78 1.06.78 2.14v3.17c0 .31.21.68.8.56A11.5 11.5 0 0 0 23.5 12 11.5 11.5 0 0 0 12 .5z"/></svg></a></li>
+            <li><a href="#" aria-label="LinkedIn" title="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.78 2.65 4.78 6.1V21h-4v-5.4c0-1.29-.02-2.95-1.8-2.95-1.8 0-2.07 1.4-2.07 2.85V21H9z"/></svg></a></li>
+            <li><a href="#" aria-label="Instagram" title="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a></li>
+            <li><a href="#" aria-label="X / Twitter" title="X / Twitter"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.9 2H22l-7.1 8.1L23 22h-6.6l-5.2-6.8L5.3 22H2.1l7.6-8.7L1.5 2h6.8l4.7 6.2L18.9 2zm-1.1 18h1.7L7.3 3.8H5.5L17.8 20z"/></svg></a></li>
+          </ul>
+        </div>
+
+        <div class="hero-visual reveal">
+          <div class="avatar-card">
+            <div class="avatar-ring"></div>
+            <div class="avatar">
+              <!-- Ganti dengan <img src="foto.jpg" alt="Foto Nama Anda" /> -->
+              <span>NA</span>
+            </div>
+            <div class="code-chip chip-1">&lt;div/&gt;</div>
+            <div class="code-chip chip-2">{ code }</div>
+            <div class="code-chip chip-3">&lt;/&gt;</div>
+          </div>
+
+          <div class="hero-stats">
+            <div class="stat">
+              <strong data-count="3" data-suffix="+">0</strong>
+              <span>Tahun Pengalaman</span>
+            </div>
+            <div class="stat">
+              <strong data-count="24" data-suffix="+">0</strong>
+              <span>Projek Selesai</span>
+            </div>
+            <div class="stat">
+              <strong data-count="15" data-suffix="+">0</strong>
+              <span>Klien Happy</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <a href="#about" class="scroll-down" aria-label="Gulir ke bawah">
+        <span></span>
+      </a>
+    </section>
+
+    <!-- ===== Tentang Saya ===== -->
+    <section class="section" id="about">
+      <div class="container">
+        <header class="section-head reveal">
+          <p class="section-eyebrow">01 — Tentang</p>
+          <h2 class="section-title">Tentang <span class="gradient-text">Saya</span></h2>
+          <p class="section-desc">Kenalan dulu, siapa saya dan apa yang saya kerjakan.</p>
+        </header>
+
+        <div class="about-grid">
+          <div class="about-text reveal">
+            <p>
+              Halo! Saya <strong>Nama Anda</strong>, seorang <strong>Web Developer</strong> yang berfokus pada
+              pengembangan front-end modern. Saya senang mengubah desain menjadi antarmuka yang hidup,
+              responsif, dan cepat di semua perangkat.
+            </p>
+            <p>
+              Selama beberapa tahun terakhir, saya mengerjakan berbagai projek mulai dari landing page,
+              dashboard, hingga aplikasi web dengan beragam teknologi. Saya percaya bahwa produk yang baik
+              lahir dari perhatian terhadap detail kecil dan komunikasi yang jelas.
+            </p>
+
+            <ul class="about-facts">
+              <li><span>Lokasi</span><strong>Jakarta, Indonesia</strong></li>
+              <li><span>Email</span><strong>nama@email.com</strong></li>
+              <li><span>Fokus</span><strong>Front-End & UI</strong></li>
+              <li><span>Status</span><strong>Terbuka untuk kolaborasi</strong></li>
+            </ul>
+
+            <a href="#" class="btn btn-ghost" download>
+              Unduh CV
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12M6 11l6 6 6-6M5 21h14"/></svg>
+            </a>
+          </div>
+
+          <aside class="about-cards">
+            <article class="about-card reveal">
+              <div class="about-card-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 18l6-6-6-6M8 6l-6 6 6 6"/></svg>
+              </div>
+              <h3>Clean Code</h3>
+              <p>Menulis kode yang terstruktur, mudah dibaca, dan mudah dirawat.</p>
+            </article>
+            <article class="about-card reveal">
+              <div class="about-card-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l2.4 7.4H22l-6 4.6 2.3 7.4L12 17l-6.3 4.4L8 14 2 9.4h7.6z"/></svg>
+              </div>
+              <h3>Berorientasi Detail</h3>
+              <p>Memperhatikan pixel, animasi, dan mikro-interaksi yang halus.</p>
+            </article>
+            <article class="about-card reveal">
+              <div class="about-card-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h7l-1 8 10-12h-7z"/></svg>
+              </div>
+              <h3>Cepat & Responsif</h3>
+              <p>Optimasi performa dan tampilan di semua ukuran layar.</p>
+            </article>
+            <article class="about-card reveal">
+              <div class="about-card-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+              </div>
+              <h3>Kolaboratif</h3>
+              <p>Terbiasa bekerja dalam tim dan berkomunikasi secara aktif.</p>
+            </article>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Keahlian ===== -->
+    <section class="section" id="skills">
+      <div class="container">
+        <header class="section-head reveal">
+          <p class="section-eyebrow">02 — Keahlian</p>
+          <h2 class="section-title">Skills &amp; <span class="gradient-text">Keahlian</span></h2>
+          <p class="section-desc">Teknologi dan alat yang saya gunakan sehari-hari.</p>
+        </header>
+
+        <div class="skills-grid">
+          <div class="skills-bars reveal">
+            <div class="skill">
+              <div class="skill-top"><span>HTML &amp; CSS</span><span class="skill-val">95%</span></div>
+              <div class="bar"><i data-level="95"></i></div>
+            </div>
+            <div class="skill">
+              <div class="skill-top"><span>JavaScript</span><span class="skill-val">90%</span></div>
+              <div class="bar"><i data-level="90"></i></div>
+            </div>
+            <div class="skill">
+              <div class="skill-top"><span>React / Vue</span><span class="skill-val">85%</span></div>
+              <div class="bar"><i data-level="85"></i></div>
+            </div>
+            <div class="skill">
+              <div class="skill-top"><span>UI / UX Design</span><span class="skill-val">80%</span></div>
+              <div class="bar"><i data-level="80"></i></div>
+            </div>
+            <div class="skill">
+              <div class="skill-top"><span>Git &amp; Tools</span><span class="skill-val">88%</span></div>
+              <div class="bar"><i data-level="88"></i></div>
+            </div>
+          </div>
+
+          <div class="skills-cards">
+            <article class="skill-card reveal">
+              <div class="skill-card-icon">&lt;/&gt;</div>
+              <h3>Front-End</h3>
+              <ul class="tags">
+                <li>HTML5</li><li>CSS3</li><li>JavaScript</li><li>TypeScript</li><li>React</li><li>Vue</li><li>Tailwind</li>
+              </ul>
+            </article>
+            <article class="skill-card reveal">
+              <div class="skill-card-icon">{ }</div>
+              <h3>Back-End</h3>
+              <ul class="tags">
+                <li>Node.js</li><li>Express</li><li>REST API</li><li>MySQL</li><li>MongoDB</li><li>Firebase</li>
+              </ul>
+            </article>
+            <article class="skill-card reveal">
+              <div class="skill-card-icon">✦</div>
+              <h3>Design &amp; Tools</h3>
+              <ul class="tags">
+                <li>Figma</li><li>Git</li><li>GitHub</li><li>Vite</li><li>VS Code</li><li>Photoshop</li>
+              </ul>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Projek ===== -->
+    <section class="section" id="projects">
+      <div class="container">
+        <header class="section-head reveal">
+          <p class="section-eyebrow">03 — Projek</p>
+          <h2 class="section-title">Projek <span class="gradient-text">Terbaru</span></h2>
+          <p class="section-desc">Sebagian pekerjaan yang saya banggakan. Klik untuk detail lebih lanjut.</p>
+        </header>
+
+        <!-- Filter -->
+        <div class="filters reveal" role="tablist" aria-label="Filter projek">
+          <button class="filter active" data-filter="all">Semua</button>
+          <button class="filter" data-filter="web">Web App</button>
+          <button class="filter" data-filter="landing">Landing Page</button>
+          <button class="filter" data-filter="ui">UI / Design</button>
+        </div>
+
+        <div class="projects-grid" id="projectsGrid">
+          <article class="project-card reveal" data-category="web">
+            <div class="project-thumb thumb-1">
+              <span class="project-thumb-icon">&lt;/&gt;</span>
+            </div>
+            <div class="project-body">
+              <span class="project-tag">Web App</span>
+              <h3>Dashboard Analitik</h3>
+              <p>Dashboard interaktif untuk memvisualisasikan data penjualan secara real-time.</p>
+              <ul class="tags"><li>React</li><li>Chart.js</li><li>Tailwind</li></ul>
+              <div class="project-links">
+                <a href="#" class="project-link">Demo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg></a>
+                <a href="#" class="project-link">Kode <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 18l6-6-6-6M8 6l-6 6 6 6"/></svg></a>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card reveal" data-category="landing">
+            <div class="project-thumb thumb-2">
+              <span class="project-thumb-icon">◈</span>
+            </div>
+            <div class="project-body">
+              <span class="project-tag">Landing Page</span>
+              <h3>Company Profile</h3>
+              <p>Landing page korporat yang modern, responsif, dan SEO friendly.</p>
+              <ul class="tags"><li>HTML</li><li>CSS</li><li>JavaScript</li></ul>
+              <div class="project-links">
+                <a href="#" class="project-link">Demo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg></a>
+                <a href="#" class="project-link">Kode <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 18l6-6-6-6M8 6l-6 6 6 6"/></svg></a>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card reveal" data-category="web">
+            <div class="project-thumb thumb-3">
+              <span class="project-thumb-icon">▦</span>
+            </div>
+            <div class="project-body">
+              <span class="project-tag">Web App</span>
+              <h3>Aplikasi Todo</h3>
+              <p>Aplikasi manajemen tugas dengan penyimpanan lokal dan drag & drop.</p>
+              <ul class="tags"><li>Vue</li><li>LocalStorage</li><li>CSS</li></ul>
+              <div class="project-links">
+                <a href="#" class="project-link">Demo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg></a>
+                <a href="#" class="project-link">Kode <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 18l6-6-6-6M8 6l-6 6 6 6"/></svg></a>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card reveal" data-category="ui">
+            <div class="project-thumb thumb-4">
+              <span class="project-thumb-icon">✦</span>
+            </div>
+            <div class="project-body">
+              <span class="project-tag">UI / Design</span>
+              <h3>Design System</h3>
+              <p>Kumpulan komponen UI yang konsisten untuk mempercepat pengembangan produk.</p>
+              <ul class="tags"><li>Figma</li><li>Design Tokens</li><li>Storybook</li></ul>
+              <div class="project-links">
+                <a href="#" class="project-link">Demo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg></a>
+                <a href="#" class="project-link">Kode <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 18l6-6-6-6M8 6l-6 6 6 6"/></svg></a>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card reveal" data-category="landing">
+            <div class="project-thumb thumb-5">
+              <span class="project-thumb-icon">◐</span>
+            </div>
+            <div class="project-body">
+              <span class="project-tag">Landing Page</span>
+              <h3>Portofolio Fotografer</h3>
+              <p>Galeri foto dengan tampilan minimalis dan transisi yang halus.</p>
+              <ul class="tags"><li>HTML</li><li>GSAP</li><li>CSS Grid</li></ul>
+              <div class="project-links">
+                <a href="#" class="project-link">Demo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg></a>
+                <a href="#" class="project-link">Kode <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 18l6-6-6-6M8 6l-6 6 6 6"/></svg></a>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card reveal" data-category="web">
+            <div class="project-thumb thumb-6">
+              <span class="project-thumb-icon">◆</span>
+            </div>
+            <div class="project-body">
+              <span class="project-tag">Web App</span>
+              <h3>E-Commerce Mini</h3>
+              <p>Toko online sederhana dengan keranjang belanja dan checkout.</p>
+              <ul class="tags"><li>Node.js</li><li>Express</li><li>MongoDB</li></ul>
+              <div class="project-links">
+                <a href="#" class="project-link">Demo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg></a>
+                <a href="#" class="project-link">Kode <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 18l6-6-6-6M8 6l-6 6 6 6"/></svg></a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Pengalaman & Pendidikan ===== -->
+    <section class="section" id="experience">
+      <div class="container">
+        <header class="section-head reveal">
+          <p class="section-eyebrow">04 — Riwayat</p>
+          <h2 class="section-title">Pengalaman &amp; <span class="gradient-text">Pendidikan</span></h2>
+          <p class="section-desc">Perjalanan karier dan latar belakang pendidikan saya.</p>
+        </header>
+
+        <div class="timeline-wrap">
+          <div class="timeline-col reveal">
+            <h3 class="timeline-title">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg>
+              Pengalaman Kerja
+            </h3>
+            <ol class="timeline">
+              <li class="timeline-item">
+                <span class="timeline-dot"></span>
+                <div class="timeline-card">
+                  <span class="timeline-date">2024 — Sekarang</span>
+                  <h4>Front-End Developer</h4>
+                  <p class="timeline-org">Nama Perusahaan · Full-time</p>
+                  <p>Mengembangkan antarmuka aplikasi web, berkolaborasi dengan tim desain dan back-end, serta menjaga kualitas kode.</p>
+                </div>
+              </li>
+              <li class="timeline-item">
+                <span class="timeline-dot"></span>
+                <div class="timeline-card">
+                  <span class="timeline-date">2022 — 2024</span>
+                  <h4>Web Developer</h4>
+                  <p class="timeline-org">Nama Startup · Contract</p>
+                  <p>Membangun landing page dan dashboard internal, serta melakukan optimasi performa dan SEO.</p>
+                </div>
+              </li>
+              <li class="timeline-item">
+                <span class="timeline-dot"></span>
+                <div class="timeline-card">
+                  <span class="timeline-date">2021 — 2022</span>
+                  <h4>Freelance Web Developer</h4>
+                  <p class="timeline-org">Remote</p>
+                  <p>Mengerjakan berbagai projek klien seperti company profile, portofolio, dan toko online.</p>
+                </div>
+              </li>
+            </ol>
+          </div>
+
+          <div class="timeline-col reveal">
+            <h3 class="timeline-title">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10L12 5 2 10l10 5 10-5z"/><path d="M6 12v5c0 1 2.7 3 6 3s6-2 6-3v-5"/></svg>
+              Pendidikan
+            </h3>
+            <ol class="timeline">
+              <li class="timeline-item">
+                <span class="timeline-dot"></span>
+                <div class="timeline-card">
+                  <span class="timeline-date">2018 — 2022</span>
+                  <h4>S1 Teknik Informatika</h4>
+                  <p class="timeline-org">Nama Universitas</p>
+                  <p>Fokus pada rekayasa perangkat lunak dan pengembangan web. Lulus dengan predikat memuaskan.</p>
+                </div>
+              </li>
+              <li class="timeline-item">
+                <span class="timeline-dot"></span>
+                <div class="timeline-card">
+                  <span class="timeline-date">2021</span>
+                  <h4>Bootcamp Web Development</h4>
+                  <p class="timeline-org">Nama Bootcamp</p>
+                  <p>Program intensif pengembangan web full-stack dengan projek akhir aplikasi nyata.</p>
+                </div>
+              </li>
+              <li class="timeline-item">
+                <span class="timeline-dot"></span>
+                <div class="timeline-card">
+                  <span class="timeline-date">2015 — 2018</span>
+                  <h4>SMA / SMK</h4>
+                  <p class="timeline-org">Nama Sekolah</p>
+                  <p>Jurusan yang relevan dengan teknologi informasi dan dasar pemrograman.</p>
+                </div>
+              </li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Kontak ===== -->
+    <section class="section" id="contact">
+      <div class="container">
+        <header class="section-head reveal">
+          <p class="section-eyebrow">05 — Kontak</p>
+          <h2 class="section-title">Mari <span class="gradient-text">Berkolaborasi</span></h2>
+          <p class="section-desc">Punya projek atau ingin sekadar menyapa? Kirim pesan kepada saya.</p>
+        </header>
+
+        <div class="contact-grid">
+          <div class="contact-info reveal">
+            <a href="mailto:nama@email.com" class="contact-item">
+              <span class="contact-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l10 6 10-6"/></svg>
+              </span>
+              <span>
+                <small>Email</small>
+                <strong>nama@email.com</strong>
+              </span>
+            </a>
+            <a href="tel:+62" class="contact-item">
+              <span class="contact-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2 4.2 2 2 0 0 1 4 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.6a16 16 0 0 0 6 6l1.1-1.1a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.7.7A2 2 0 0 1 22 16.9z"/></svg>
+              </span>
+              <span>
+                <small>Telepon</small>
+                <strong>+62 812 3456 7890</strong>
+              </span>
+            </a>
+            <div class="contact-item">
+              <span class="contact-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              </span>
+              <span>
+                <small>Lokasi</small>
+                <strong>Jakarta, Indonesia</strong>
+              </span>
+            </div>
+
+            <div class="contact-socials">
+              <a href="#" aria-label="GitHub" title="GitHub"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5A11.5 11.5 0 0 0 .5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.56v-2c-3.2.7-3.88-1.54-3.88-1.54-.53-1.34-1.29-1.7-1.29-1.7-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.56-.29-5.25-1.28-5.25-5.69 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11 11 0 0 1 5.79 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.12 3.05.74.81 1.18 1.83 1.18 3.09 0 4.42-2.69 5.39-5.26 5.68.41.36.78 1.06.78 2.14v3.17c0 .31.21.68.8.56A11.5 11.5 0 0 0 23.5 12 11.5 11.5 0 0 0 12 .5z"/></svg></a>
+              <a href="#" aria-label="LinkedIn" title="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.78 2.65 4.78 6.1V21h-4v-5.4c0-1.29-.02-2.95-1.8-2.95-1.8 0-2.07 1.4-2.07 2.85V21H9z"/></svg></a>
+              <a href="#" aria-label="Instagram" title="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
+              <a href="#" aria-label="X / Twitter" title="X / Twitter"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.9 2H22l-7.1 8.1L23 22h-6.6l-5.2-6.8L5.3 22H2.1l7.6-8.7L1.5 2h6.8l4.7 6.2L18.9 2zm-1.1 18h1.7L7.3 3.8H5.5L17.8 20z"/></svg></a>
+            </div>
+          </div>
+
+          <form class="contact-form reveal" id="contactForm" novalidate>
+            <div class="field">
+              <label for="name">Nama</label>
+              <input type="text" id="name" name="name" placeholder="Nama Anda" required />
+              <span class="field-error" data-error-for="name"></span>
+            </div>
+            <div class="field">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" placeholder="email@contoh.com" required />
+              <span class="field-error" data-error-for="email"></span>
+            </div>
+            <div class="field">
+              <label for="subject">Subjek</label>
+              <input type="text" id="subject" name="subject" placeholder="Topik pesan" required />
+              <span class="field-error" data-error-for="subject"></span>
+            </div>
+            <div class="field">
+              <label for="message">Pesan</label>
+              <textarea id="message" name="message" rows="5" placeholder="Tulis pesan Anda di sini..." required></textarea>
+              <span class="field-error" data-error-for="message"></span>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">
+              Kirim Pesan
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4z"/></svg>
+            </button>
+            <p class="form-note" id="formNote" role="status" aria-live="polite"></p>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===== Footer ===== -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <a href="#home" class="brand">
+        <span class="brand-mark">N</span>
+        <span class="brand-text">Nama Anda</span>
+      </a>
+      <p class="footer-copy">&copy; <span id="year"></span> Nama Anda. Dibuat dengan <span class="heart">♥</span>.</p>
+      <a href="#home" class="back-to-top" aria-label="Kembali ke atas" title="Kembali ke atas">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+      </a>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
